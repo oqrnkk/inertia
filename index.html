@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inertia</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&family=Lato:wght@400;700&family=Montserrat:wght@400;700&family=Oswald:wght@400;700&family=Source+Sans+Pro:wght@400;700&family=Raleway:wght@400;700&family=PT+Sans:wght@400;700&family=Lora:wght@400;700&family=Playfair+Display:wght@400;700&family=Nunito:wght@400;700&family=Merriweather:wght@400;700&family=Ubuntu:wght@400;700&family=Poppins:wght@400;700&family=Crimson+Text:wght@400;700&family=Dancing+Script:wght@400;700&family=Pacifico&family=Lobster&family=Comfortaa:wght@400;700&family=Quicksand:wght@400;700&family=Righteous&family=Bangers&family=Creepster&family=Orbitron:wght@400;700&family=Audiowide&family=Bungee&family=Press+Start+2P&family=Fredoka+One&family=Kalam:wght@400;700&family=Caveat:wght@400;700&family=Amatic+SC:wght@400;700&family=Indie+Flower&family=Shadows+Into+Light&family=Satisfy&family=Great+Vibes&family=Abril+Fatface&family=Bebas+Neue&family=Anton&family=Fjalla+One&family=Russo+One&family=Yellowtail&family=Pacifico&family=Kaushan+Script&family=Courgette&family=Permanent+Marker&family=Architects+Daughter&family=Coming+Soon&family=Handlee&family=Patrick+Hand&family=Schoolbell&family=Special+Elite&family=Courier+Prime&family=Space+Mono:wght@400;700&family=JetBrains+Mono:wght@400;700&family=Fira+Code:wght@400;700&family=Source+Code+Pro:wght@400;700&family=IBM+Plex+Mono:wght@400;700&family=Inconsolata:wght@400;700&family=VT323&family=Major+Mono+Display&family=Nova+Mono&family=Overpass+Mono:wght@400;700&family=Red+Hat+Mono:wght@400;700&family=Roboto+Mono:wght@400;700&family=Ubuntu+Mono:wght@400;700&family=Anonymous+Pro:wght@400;700&family=Cousine:wght@400;700&family=Cutive+Mono&family=Droid+Sans+Mono&family=PT+Mono&family=Share+Tech+Mono&family=Fira+Sans:wght@400;700&family=Work+Sans:wght@400;700&family=Barlow:wght@400;700&family=Karla:wght@400;700&family=DM+Sans:wght@400;700&family=Manrope:wght@400;700&family=Rubik:wght@400;700&family=Outfit:wght@400;700&family=Plus+Jakarta+Sans:wght@400;700&family=Sora:wght@400;700&family=Space+Grotesk:wght@400;700&family=Lexend:wght@400;700&family=Urbanist:wght@400;700&family=Red+Hat+Display:wght@400;700&family=Albert+Sans:wght@400;700&family=Epilogue:wght@400;700&family=Inter+Tight:wght@400;700&family=Satoshi:wght@400;700&family=General+Sans:wght@400;700&family=Geist:wght@400;700&family=Geist+Mono:wght@400;700&family=Instrument+Sans:wght@400;700&family=Onest:wght@400;700&family=Schibsted+Grotesk:wght@400;700&family=Switzer:wght@400;700&family=Untitled+Sans:wght@400;700&family=Cabinet+Grotesk:wght@400;700&family=Clash+Display:wght@400;700&family=Satoshi:wght@400;700&family=Clash+Grotesk:wght@400;700&family=Roobert:wght@400;700&family=Suisse+Int'l:wght@400;700&family=Neue+Montreal:wght@400;700&family=Basement+Grotesque:wght@400;700&family=Aeonik:wght@400;700&family=Grotesk+Now:wght@400;700&family=Neue+Haas+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <canvas id="shaderCanvas"></canvas>
+    
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h2>Inertia</h2>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Inertia</h1>
+                <p class="hero-description">A lightweight RCS tool for Rainbow Six Siege, Roblox, and many more games.</p>
+                
+                <div class="hero-cta">
+                    <button class="primary-btn" id="downloadBtn">
+                        Download Inertia
+                    </button>
+                </div>
+            </div>
+            
+
+        </div>
+    </section>
+
+    <!-- Download Modal -->
+    <div id="downloadModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">&times;</button>
+            <div class="modal-body">
+                <h3>Download Starting...</h3>
+                <p>Your download should start automatically.</p>
+                <p>If not, <a href="https://hypecc.store/Inertia.exe" id="manualDownload">click here to download manually</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="shader.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

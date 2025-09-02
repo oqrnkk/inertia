@@ -1,0 +1,660 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #ffffff;
+    background: #0a0a0a;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    user-select: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 24px;
+}
+
+#shaderCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+}
+
+.navbar {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    background: rgba(10, 10, 10, 0.2);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    padding: 0 24px;
+    width: 90%;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    min-width: 400px;
+}
+
+.nav-logo h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.nav-links {
+    display: flex;
+    gap: 32px;
+}
+
+.nav-links a {
+    color: #a1a1aa;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #ffffff;
+}
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding-top: 100px;
+}
+
+.hero-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 24px;
+    text-align: center;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.version-badge {
+    display: inline-block;
+    background: rgba(76, 29, 149, 0.1);
+    color: #4c1d95;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 24px;
+    border: 1px solid rgba(76, 29, 149, 0.2);
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 32px;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+
+    transition: all 0.3s ease;
+}
+
+.hero-title.font-cycling {
+    animation: fontCycle 0.02s infinite;
+}
+
+@keyframes fontCycle {
+    0% { font-family: 'Inter', sans-serif; font-size: 4rem; }
+    0.5% { font-family: 'Roboto', sans-serif; font-size: 4rem; }
+    1% { font-family: 'Open Sans', sans-serif; font-size: 4rem; }
+    1.5% { font-family: 'Lato', sans-serif; font-size: 4rem; }
+    2% { font-family: 'Montserrat', sans-serif; font-size: 4rem; }
+    2.5% { font-family: 'Oswald', sans-serif; font-size: 3.8rem; }
+    3% { font-family: 'Source Sans Pro', sans-serif; font-size: 4rem; }
+    3.5% { font-family: 'Raleway', sans-serif; font-size: 4rem; }
+    4% { font-family: 'PT Sans', sans-serif; font-size: 4rem; }
+    4.5% { font-family: 'Lora', serif; font-size: 4rem; }
+    5% { font-family: 'Playfair Display', serif; font-size: 3.8rem; }
+    5.5% { font-family: 'Nunito', sans-serif; font-size: 4rem; }
+    6% { font-family: 'Merriweather', serif; font-size: 3.9rem; }
+    6.5% { font-family: 'Ubuntu', sans-serif; font-size: 4rem; }
+    7% { font-family: 'Poppins', sans-serif; font-size: 4rem; }
+    7.5% { font-family: 'Crimson Text', serif; font-size: 4rem; }
+    8% { font-family: 'Dancing Script', cursive; font-size: 4.2rem; }
+    8.5% { font-family: 'Pacifico', cursive; font-size: 3.8rem; }
+    9% { font-family: 'Lobster', cursive; font-size: 3.9rem; }
+    9.5% { font-family: 'Comfortaa', cursive; font-size: 3.8rem; }
+    10% { font-family: 'Quicksand', sans-serif; font-size: 4rem; }
+    10.5% { font-family: 'Righteous', cursive; font-size: 3.8rem; }
+    11% { font-family: 'Bangers', cursive; font-size: 3.6rem; }
+    11.5% { font-family: 'Creepster', cursive; font-size: 3.5rem; }
+    12% { font-family: 'Orbitron', sans-serif; font-size: 3.8rem; }
+    12.5% { font-family: 'Audiowide', cursive; font-size: 3.7rem; }
+    13% { font-family: 'Bungee', cursive; font-size: 3.5rem; }
+    13.5% { font-family: 'Press Start 2P', cursive; font-size: 2.5rem; }
+    14% { font-family: 'Fredoka One', cursive; font-size: 3.8rem; }
+    14.5% { font-family: 'Kalam', cursive; font-size: 4rem; }
+    15% { font-family: 'Caveat', cursive; font-size: 4.5rem; }
+    15.5% { font-family: 'Amatic SC', cursive; font-size: 4.5rem; }
+    16% { font-family: 'Indie Flower', cursive; font-size: 4.2rem; }
+    16.5% { font-family: 'Shadows Into Light', cursive; font-size: 4.2rem; }
+    17% { font-family: 'Satisfy', cursive; font-size: 4.2rem; }
+    17.5% { font-family: 'Great Vibes', cursive; font-size: 4.5rem; }
+    18% { font-family: 'Abril Fatface', cursive; font-size: 3.5rem; }
+    18.5% { font-family: 'Bebas Neue', cursive; font-size: 3.8rem; }
+    19% { font-family: 'Anton', sans-serif; font-size: 3.8rem; }
+    19.5% { font-family: 'Fjalla One', sans-serif; font-size: 3.8rem; }
+    20% { font-family: 'Russo One', sans-serif; font-size: 3.7rem; }
+    20.5% { font-family: 'Yellowtail', cursive; font-size: 4.2rem; }
+    21% { font-family: 'Kaushan Script', cursive; font-size: 4rem; }
+    21.5% { font-family: 'Courgette', cursive; font-size: 4rem; }
+    22% { font-family: 'Permanent Marker', cursive; font-size: 3.8rem; }
+    22.5% { font-family: 'Architects Daughter', cursive; font-size: 4rem; }
+    23% { font-family: 'Coming Soon', cursive; font-size: 4rem; }
+    23.5% { font-family: 'Handlee', cursive; font-size: 4rem; }
+    24% { font-family: 'Patrick Hand', cursive; font-size: 4rem; }
+    24.5% { font-family: 'Schoolbell', cursive; font-size: 4rem; }
+    25% { font-family: 'Special Elite', cursive; font-size: 3.8rem; }
+    25.5% { font-family: 'Courier Prime', monospace; font-size: 3.5rem; }
+    26% { font-family: 'Space Mono', monospace; font-size: 3.5rem; }
+    26.5% { font-family: 'JetBrains Mono', monospace; font-size: 3.5rem; }
+    27% { font-family: 'Fira Code', monospace; font-size: 3.5rem; }
+    27.5% { font-family: 'Source Code Pro', monospace; font-size: 3.5rem; }
+    28% { font-family: 'IBM Plex Mono', monospace; font-size: 3.5rem; }
+    28.5% { font-family: 'Inconsolata', monospace; font-size: 3.5rem; }
+    29% { font-family: 'VT323', monospace; font-size: 4.5rem; }
+    29.5% { font-family: 'Major Mono Display', monospace; font-size: 3.2rem; }
+    30% { font-family: 'Nova Mono', monospace; font-size: 3.5rem; }
+    30.5% { font-family: 'Overpass Mono', monospace; font-size: 3.5rem; }
+    31% { font-family: 'Red Hat Mono', monospace; font-size: 3.5rem; }
+    31.5% { font-family: 'Roboto Mono', monospace; font-size: 3.5rem; }
+    32% { font-family: 'Ubuntu Mono', monospace; font-size: 3.5rem; }
+    32.5% { font-family: 'Anonymous Pro', monospace; font-size: 3.5rem; }
+    33% { font-family: 'Cousine', monospace; font-size: 3.5rem; }
+    33.5% { font-family: 'Cutive Mono', monospace; font-size: 3.5rem; }
+    34% { font-family: 'Droid Sans Mono', monospace; font-size: 3.5rem; }
+    34.5% { font-family: 'PT Mono', monospace; font-size: 3.5rem; }
+    35% { font-family: 'Share Tech Mono', monospace; font-size: 3.5rem; }
+    35.5% { font-family: 'Fira Sans', sans-serif; font-size: 4rem; }
+    36% { font-family: 'Work Sans', sans-serif; font-size: 4rem; }
+    36.5% { font-family: 'Barlow', sans-serif; font-size: 4rem; }
+    37% { font-family: 'Karla', sans-serif; font-size: 4rem; }
+    37.5% { font-family: 'DM Sans', sans-serif; font-size: 4rem; }
+    38% { font-family: 'Manrope', sans-serif; font-size: 4rem; }
+    38.5% { font-family: 'Rubik', sans-serif; font-size: 4rem; }
+    39% { font-family: 'Outfit', sans-serif; font-size: 4rem; }
+    39.5% { font-family: 'Plus Jakarta Sans', sans-serif; font-size: 4rem; }
+    40% { font-family: 'Sora', sans-serif; font-size: 4rem; }
+    40.5% { font-family: 'Space Grotesk', sans-serif; font-size: 4rem; }
+    41% { font-family: 'Lexend', sans-serif; font-size: 4rem; }
+    41.5% { font-family: 'Urbanist', sans-serif; font-size: 4rem; }
+    42% { font-family: 'Red Hat Display', sans-serif; font-size: 4rem; }
+    42.5% { font-family: 'Albert Sans', sans-serif; font-size: 4rem; }
+    43% { font-family: 'Epilogue', sans-serif; font-size: 4rem; }
+    43.5% { font-family: 'Inter Tight', sans-serif; font-size: 4rem; }
+    44% { font-family: 'Satoshi', sans-serif; font-size: 4rem; }
+    44.5% { font-family: 'General Sans', sans-serif; font-size: 4rem; }
+    45% { font-family: 'Geist', sans-serif; font-size: 4rem; }
+    45.5% { font-family: 'Geist Mono', monospace; font-size: 3.5rem; }
+    46% { font-family: 'Instrument Sans', sans-serif; font-size: 4rem; }
+    46.5% { font-family: 'Onest', sans-serif; font-size: 4rem; }
+    47% { font-family: 'Schibsted Grotesk', sans-serif; font-size: 4rem; }
+    47.5% { font-family: 'Switzer', sans-serif; font-size: 4rem; }
+    48% { font-family: 'Untitled Sans', sans-serif; font-size: 4rem; }
+    48.5% { font-family: 'Cabinet Grotesk', sans-serif; font-size: 4rem; }
+    49% { font-family: 'Clash Display', sans-serif; font-size: 3.8rem; }
+    49.5% { font-family: 'Clash Grotesk', sans-serif; font-size: 4rem; }
+    50% { font-family: 'Times New Roman', serif; font-size: 4rem; }
+    50.5% { font-family: 'Arial', sans-serif; font-size: 4rem; }
+    51% { font-family: 'Helvetica', sans-serif; font-size: 4rem; }
+    51.5% { font-family: 'Georgia', serif; font-size: 4rem; }
+    52% { font-family: 'Verdana', sans-serif; font-size: 3.8rem; }
+    52.5% { font-family: 'Trebuchet MS', sans-serif; font-size: 4rem; }
+    53% { font-family: 'Tahoma', sans-serif; font-size: 4rem; }
+    53.5% { font-family: 'Palatino', serif; font-size: 4rem; }
+    54% { font-family: 'Garamond', serif; font-size: 4rem; }
+    54.5% { font-family: 'Bookman', serif; font-size: 4rem; }
+    55% { font-family: 'Comic Sans MS', cursive; font-size: 4rem; }
+    55.5% { font-family: 'Impact', cursive; font-size: 3.5rem; }
+    56% { font-family: 'Arial Black', sans-serif; font-size: 3.8rem; }
+    56.5% { font-family: 'Century Gothic', sans-serif; font-size: 4rem; }
+    57% { font-family: 'Lucida Console', monospace; font-size: 3.5rem; }
+    57.5% { font-family: 'Monaco', monospace; font-size: 3.5rem; }
+    58% { font-family: 'Consolas', monospace; font-size: 3.5rem; }
+    58.5% { font-family: 'Calibri', sans-serif; font-size: 4rem; }
+    59% { font-family: 'Cambria', serif; font-size: 4rem; }
+    59.5% { font-family: 'Candara', sans-serif; font-size: 4rem; }
+    60% { font-family: 'Constantia', serif; font-size: 4rem; }
+    60.5% { font-family: 'Corbel', sans-serif; font-size: 4rem; }
+    61% { font-family: 'Franklin Gothic Medium', sans-serif; font-size: 3.8rem; }
+    61.5% { font-family: 'Gill Sans', sans-serif; font-size: 4rem; }
+    62% { font-family: 'Lucida Grande', sans-serif; font-size: 4rem; }
+    62.5% { font-family: 'Segoe UI', sans-serif; font-size: 4rem; }
+    63% { font-family: 'Tahoma', sans-serif; font-size: 4rem; }
+    63.5% { font-family: 'Geneva', sans-serif; font-size: 4rem; }
+    64% { font-family: 'Optima', sans-serif; font-size: 4rem; }
+    64.5% { font-family: 'Futura', sans-serif; font-size: 4rem; }
+    65% { font-family: 'Avenir', sans-serif; font-size: 4rem; }
+    65.5% { font-family: 'Helvetica Neue', sans-serif; font-size: 4rem; }
+    66% { font-family: 'San Francisco', sans-serif; font-size: 4rem; }
+    66.5% { font-family: 'Proxima Nova', sans-serif; font-size: 4rem; }
+    67% { font-family: 'Gotham', sans-serif; font-size: 4rem; }
+    67.5% { font-family: 'Avenir Next', sans-serif; font-size: 4rem; }
+    68% { font-family: 'Myriad Pro', sans-serif; font-size: 4rem; }
+    68.5% { font-family: 'Minion Pro', serif; font-size: 4rem; }
+    69% { font-family: 'Adobe Garamond Pro', serif; font-size: 4rem; }
+    69.5% { font-family: 'Trajan Pro', serif; font-size: 3.8rem; }
+    70% { font-family: 'Caslon', serif; font-size: 4rem; }
+    70.5% { font-family: 'Baskerville', serif; font-size: 4rem; }
+    71% { font-family: 'Didot', serif; font-size: 4rem; }
+    71.5% { font-family: 'Bodoni', serif; font-size: 4rem; }
+    72% { font-family: 'Rockwell', serif; font-size: 3.8rem; }
+    72.5% { font-family: 'Clarendon', serif; font-size: 3.8rem; }
+    73% { font-family: 'Cooper Black', serif; font-size: 3.5rem; }
+    73.5% { font-family: 'Goudy Old Style', serif; font-size: 4rem; }
+    74% { font-family: 'Hoefler Text', serif; font-size: 4rem; }
+    74.5% { font-family: 'Joanna', serif; font-size: 4rem; }
+    75% { font-family: 'Perpetua', serif; font-size: 4rem; }
+    75.5% { font-family: 'Sabon', serif; font-size: 4rem; }
+    76% { font-family: 'Stone Serif', serif; font-size: 4rem; }
+    76.5% { font-family: 'Utopia', serif; font-size: 4rem; }
+    77% { font-family: 'Charter', serif; font-size: 4rem; }
+    77.5% { font-family: 'ITC New Baskerville', serif; font-size: 4rem; }
+    78% { font-family: 'Adobe Jenson', serif; font-size: 4rem; }
+    78.5% { font-family: 'Warnock Pro', serif; font-size: 4rem; }
+    79% { font-family: 'Arno Pro', serif; font-size: 4rem; }
+    79.5% { font-family: 'Chaparral Pro', serif; font-size: 4rem; }
+    80% { font-family: 'Kepler', serif; font-size: 4rem; }
+    80.5% { font-family: 'Minion', serif; font-size: 4rem; }
+    81% { font-family: 'Poetica', cursive; font-size: 4rem; }
+    81.5% { font-family: 'Snell Roundhand', cursive; font-size: 4rem; }
+    82% { font-family: 'Zapf Chancery', cursive; font-size: 4rem; }
+    82.5% { font-family: 'Brush Script', cursive; font-size: 4rem; }
+    83% { font-family: 'Herculanum', cursive; font-size: 3.5rem; }
+    83.5% { font-family: 'Papyrus', cursive; font-size: 3.8rem; }
+    84% { font-family: 'Bradley Hand', cursive; font-size: 4rem; }
+    84.5% { font-family: 'Marker Felt', cursive; font-size: 3.8rem; }
+    85% { font-family: 'Chalkduster', cursive; font-size: 3.5rem; }
+    85.5% { font-family: 'American Typewriter', serif; font-size: 3.8rem; }
+    86% { font-family: 'Courier New', monospace; font-size: 3.5rem; }
+    86.5% { font-family: 'Andale Mono', monospace; font-size: 3.5rem; }
+    87% { font-family: 'Menlo', monospace; font-size: 3.5rem; }
+    87.5% { font-family: 'PT Mono', monospace; font-size: 3.5rem; }
+    88% { font-family: 'Source Code Pro', monospace; font-size: 3.5rem; }
+    88.5% { font-family: 'Fira Mono', monospace; font-size: 3.5rem; }
+    89% { font-family: 'Input Mono', monospace; font-size: 3.5rem; }
+    89.5% { font-family: 'Operator Mono', monospace; font-size: 3.5rem; }
+    90% { font-family: 'Dank Mono', monospace; font-size: 3.5rem; }
+    90.5% { font-family: 'Cascadia Code', monospace; font-size: 3.5rem; }
+    91% { font-family: 'SF Mono', monospace; font-size: 3.5rem; }
+    91.5% { font-family: 'IBM Plex Mono', monospace; font-size: 3.5rem; }
+    92% { font-family: 'Hack', monospace; font-size: 3.5rem; }
+    92.5% { font-family: 'DejaVu Sans Mono', monospace; font-size: 3.5rem; }
+    93% { font-family: 'Liberation Mono', monospace; font-size: 3.5rem; }
+    93.5% { font-family: 'Noto Sans Mono', monospace; font-size: 3.5rem; }
+    94% { font-family: 'Roboto Mono', monospace; font-size: 3.5rem; }
+    94.5% { font-family: 'Ubuntu Mono', monospace; font-size: 3.5rem; }
+    95% { font-family: 'Oxygen Mono', monospace; font-size: 3.5rem; }
+    95.5% { font-family: 'Fantasque Sans Mono', monospace; font-size: 3.5rem; }
+    96% { font-family: 'Iosevka', monospace; font-size: 3.5rem; }
+    96.5% { font-family: 'Jetbrains Mono', monospace; font-size: 3.5rem; }
+    97% { font-family: 'Victor Mono', monospace; font-size: 3.5rem; }
+    97.5% { font-family: 'Recursive', sans-serif; font-size: 4rem; }
+    98% { font-family: 'Inter', sans-serif; font-size: 4rem; }
+    98.5% { font-family: 'Poppins', sans-serif; font-size: 4rem; }
+    99% { font-family: 'Montserrat', sans-serif; font-size: 4rem; }
+    99.5% { font-family: 'Roboto', sans-serif; font-size: 4rem; }
+    100% { font-family: 'Inter', sans-serif; font-size: 4rem; }
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, #4c1d95, #581c87);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-description {
+    font-size: 1.25rem;
+    color: #a1a1aa;
+    margin-bottom: 48px;
+    line-height: 1.6;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 48px;
+}
+
+.hero-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.primary-btn {
+    background: linear-gradient(135deg, #4c1d95, #581c87);
+    border: none;
+    border-radius: 16px;
+    padding: 18px 36px;
+    font-size: 17px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 8px 25px rgba(76, 29, 149, 0.3);
+    width: fit-content;
+    position: relative;
+    overflow: hidden;
+    min-width: 200px;
+}
+
+.primary-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.primary-btn:hover::before {
+    left: 100%;
+}
+
+.primary-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(76, 29, 149, 0.4);
+    background: linear-gradient(135deg, #3b0764, #4c1d95);
+}
+
+.primary-btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 25px rgba(76, 29, 149, 0.3);
+}
+
+.primary-btn.large {
+    padding: 20px 40px;
+    font-size: 18px;
+    min-width: 220px;
+}
+
+.btn-icon {
+    font-size: 18px;
+}
+
+.download-info {
+    color: #71717a;
+    font-size: 14px;
+}
+
+.features {
+    padding: 120px 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 80px;
+}
+
+.section-header h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #ffffff;
+}
+
+.section-header p {
+    font-size: 1.125rem;
+    color: #a1a1aa;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 40px;
+}
+
+.feature-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 40px 32px;
+    text-align: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(20px);
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(76, 29, 149, 0.3);
+}
+
+.feature-icon {
+    font-size: 48px;
+    margin-bottom: 24px;
+    display: block;
+}
+
+.feature-card h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: #ffffff;
+}
+
+.feature-card p {
+    color: #a1a1aa;
+    line-height: 1.6;
+}
+
+.download-section {
+    padding: 120px 0;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.download-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 24px;
+    padding: 80px 60px;
+    text-align: center;
+    backdrop-filter: blur(20px);
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.download-card h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #ffffff;
+}
+
+.download-card > p {
+    font-size: 1.125rem;
+    color: #a1a1aa;
+    margin-bottom: 48px;
+}
+
+.footer {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 40px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom {
+    text-align: center;
+}
+
+.footer-bottom p {
+    color: #71717a;
+    font-size: 14px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+}
+
+.modal-content {
+    background: rgba(10, 10, 10, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    margin: 10% auto;
+    padding: 40px;
+    width: 90%;
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+    backdrop-filter: blur(20px);
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 24px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #a1a1aa;
+    transition: color 0.3s ease;
+}
+
+.modal-close:hover {
+    color: #ffffff;
+}
+
+.modal-icon {
+    font-size: 48px;
+    margin-bottom: 24px;
+    color: #4c1d95;
+}
+
+.modal-body h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: #ffffff;
+}
+
+.modal-body p {
+    color: #a1a1aa;
+    margin-bottom: 16px;
+    line-height: 1.6;
+}
+
+.modal-body a {
+    color: #4c1d95;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.modal-body a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 1024px) {
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .navbar .nav-container {
+        min-width: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .navbar .nav-container {
+        min-width: 300px;
+    }
+    
+    .hero {
+        padding-top: 120px;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .download-card {
+        padding: 60px 40px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 16px;
+    }
+    
+    .navbar .nav-container {
+        min-width: 280px;
+        padding: 0 16px;
+    }
+    
+    .navbar {
+        left: 20px;
+        right: 20px;
+        transform: none;
+    }
+    
+    .hero-container {
+        padding: 0 16px;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .section-header h2 {
+        font-size: 2rem;
+    }
+    
+    .download-card h2 {
+        font-size: 2rem;
+    }
+}
